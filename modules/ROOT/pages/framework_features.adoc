@@ -39,7 +39,7 @@ Fähigkeiten
 
 [[angular_layers]]
 .Angular Layers
-image::../images/angular_layers.drawio.svg[align=center]
+image::angular_layers.drawio.svg[align=center]
 
 
 == Templates
