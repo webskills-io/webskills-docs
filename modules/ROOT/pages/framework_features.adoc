@@ -1,0 +1,95 @@
+= Wie helfen Frameworks?
+
+Oft gennate Gründe für Webframeworks sind:
+
+* Modularität und Komponentenabstraktion
+* große Entwicklercommunity
+* Best Paractices für gute Skalierbarkeit (sowohl Dev-Resourcen und Scope)
+* Nutzliche Third-party-libraries um alltägliche Tasks zu erleichtern
+* CLI / Dev-tool Unterstützung zum Scaffolding und zur Entwicklung.
+* Sie sind der ausgetretene Pfad um SPAs zu entwicklen...
+
+Im wesentlichen versucht ARV aber die Lösung einer wesentlichen und komplexen Aufgabe liefern:
+Applikationen im Browser zu erstellen, deren komplexe Applikationsstates mit der UI synchron bleibt.
+
+Aus der Perspektive des Nutzers ist das die Voraussetzung
+
+Zur Erinnerung die Aufgabenteilung eines klassischen Ansatzes:
+
+* HTML ist als Struktur ist statisch
+* CSS malt alles bunt an.
+* Javascript liefert die Möglichkeit Inhalte durch Manipulation des DOM zu Dynamisieren und auf Interaktion mit dem Nutzer zu reagieren.
+
+Frühe Tools wie JQuery oder Template-Engines erleichterten zwar die Ausgabe, mit der DOM-API unabhängig vom Browser zu arbeiten.
+Die zwei klassischen Herausforderungen haben sie aber nicht adressiert.
+Diese mussten durch aufwendiges, fehleranfälliges scripting zu Fuß gemeistert werden:
+
+* richtiges Adressieren der relevanten DOM-teile, zum effektiven Überschreiben der jeweiligen Daten.
+* Das Management und Rewiring der Eventhandler im Userinterface - diese mussten in der Regel programmatisch neu verdrahtet werden, um die Applikation für den Benutzer reaktiv zu halten.
+
+Wenn man heute den Paradigmen des jeweiligen Frameworks folgt, liefert ARV brauchbare Tools, um Events aller Art (server- oder userseitig) zu orchestrieren und kontrollierte State-change in unterschiedliche Teilen der Applikation effektiv und zuverlässig durchzuführen.
+
+Fähigkeiten
+
+* Zugänglichkeit
+* Deklarativität
+* Schichten
+* (Komfort)funktionen 
+* (Opinionated)
+
+[[angular_layers]]
+.Angular Layers
+image::../images/angular_layers.drawio.svg[align=center]
+
+
+== Templates
+* deklarative Beschreibung des Seitenlayouts
+
+== Animation
+
+== Shadowing / Encapsulation
+Abgeschlossenheit in Logik und Style.
+Verpackbar, wiederverwendbar, shareable, code-splitbar, lazy-loadbar.
+
+* schützt Komponenten im Browser vor unerwünschten Wechselwirkungen (CSS, DOM)
+
+Statt endlos geschachtelter CSS-Selektoren, um sicherzustellen, dass auch nicht die Hintergrundfarbe das falschen Tags geändert wird
+
+[source,scss]
+----
+.main-container {
+    my-component {
+        div {
+            border: 1px solid green;
+        }
+    }
+}
+
+----
+
+können Styling-Angaben auf eine einzelne Komponenten begrenzt werden:
+
+[source,scss]
+----
+div {
+    border: 1px solid green;
+}
+----
+
+== Reaktivität
+Data-Bindung
+
+* versteckt und gewährleistet Update-Verarbeitung
+
+== Routing
+* vereinfacht navigationsbedingte Anzeige von Komponenten
+* durch deklarative Beschreibung in Routing-Tabelle
+
+== IoC
+
+== Code Organization
+* hilft Code übersichtlicher und nebeneffektfreier zu organisieren
+
+== Data Store
+* koordiniert Zugriffe auf die Daten
+
