@@ -1,2 +1,4 @@
 * xref:index.adoc[] 
 * xref:ROOT:framework_features.adoc[] 
+* xref:ROOT:frontend_requirements.adoc[] 
+* xref:ROOT:friction.adoc[] 
