@@ -1,0 +1,5 @@
+= Webskills Home
+:navtitle: Home
+:page-role: home
+
+Hallo bei Webskills
