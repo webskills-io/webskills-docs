@@ -7,7 +7,7 @@ Oft gennate Gründe für Webframeworks sind:
 * Best Paractices für gute Skalierbarkeit (sowohl Dev-Resourcen und Scope)
 * Nutzliche Third-party-libraries um alltägliche Tasks zu erleichtern
 * CLI / Dev-tool Unterstützung zum Scaffolding und zur Entwicklung.
-* Sie sind der ausgetretene Pfad um SPAs zu entwicklen...
+* Sie sind der ausgetretene Pfad, um SPAs zu entwicklen...
 
 Im wesentlichen versucht ARV aber die Lösung einer wesentlichen und komplexen Aufgabe liefern:
 Applikationen im Browser zu erstellen, deren komplexe Applikationsstates mit der UI synchron bleibt.
