@@ -1,2 +1,2 @@
 * xref:index.adoc[] 
-* xref:ROOT:framework-features.adoc[] 
+* xref:framework-features.adoc[] 
