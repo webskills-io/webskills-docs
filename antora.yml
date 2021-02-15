@@ -2,3 +2,5 @@ name: home
 title: Webskills
 version: master
 display_version: current
+nav:
+  - modules/ROOT/nav.adoc
