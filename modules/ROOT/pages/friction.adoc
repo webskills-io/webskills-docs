@@ -1,0 +1,11 @@
+= Reibungszonen
+
+
+
+== Anforderungen an die Artefakte
+
+Sie müssen änderbar sein
+
+* überhaupt (Zugänglichkeit) und verständlich (Deklarativität)
+* ordentlich (Modularität) und nachhaltig (Architektur)
+* einfacher (Funktionalität & Automatismen)

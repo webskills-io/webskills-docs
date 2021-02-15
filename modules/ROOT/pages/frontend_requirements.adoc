@@ -1,0 +1,227 @@
+= Anforderungen
+
+Ein gutes Frontend zu entwickeln ist eine Optimierungsaufgabe, bei der Anforderungen aus ganz verschiedenen Richtungen berücksichtigt werden müssen.
+
+Folgende Rollen werden betrachtet
+
+* PoC-Dev/Sponsor
+* (UI/UX) Designer
+* Design-Ops
+* (BE/FE) Programmierer
+* Architekt
+* Product Owner
+* Endnutzer
+
+
+== PoC/Sponsor/Marketing/Controlling
+
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+| Q-4 | Flexibilität / Erweiterbarkeit
+| Es soll möglich sein, die Formulare, Tabellen, Dialoge etc. mit geringen Aufwand anzupassen, insbesondere ohne auf Änderungen im Backend angewiesen zu sein.
+
+|| Skalierbarkeit
+| mit steigendem Funktionsumfang, weiteren Plattformen
+
+|| Investitionssicherheit
+|
+
+|| SEO
+| Die Applikation soll gute Ergebnisse in Suchmaschinen ermöglichen.
+
+|===
+
+== Designer
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+|| Ui Change 
+| Es soll möglich sein, die Gestaltung im Laufe der Zeit zu verändern.
+
+|| Freiheit
+| Ein hoher DOF soll gewährleistet sein. Es soll Platz für innovative Konzepte geben.
+
+|===
+
+== Design-Ops
+
+Design Ops hat eine integrierende Aufgabe zwischen Design und Standard-Anforderungen, wie sie in der Entwicklung seit langem etabliert wurden.
+
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+|| Übergabe/Übernahme-Fähigkeit
+| Die Gestaltung des Frontend sollen nachvollziehbaren Ideen folgen, die bei Personaländerungen weiterverfolgt werden können.
+
+|| Dokumentation
+| Eigenschaften des Design sollen dokumentiert werden. Gefällte Design-Entscheidungen sollen transparent gemacht werden.
+
+|| Testbarkeit
+| Das implementierte Design soll (automatisiert) getestet werden können (für verschiedene Endgeräte), auch Regressionstest
+
+|| Pattern Library
+| DRY/Wiederverwendbarkeit, einheitliche Design-Prinzipien
+
+|===
+
+== Programmierer
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+| Q-4 | Flexibilität / Erweiterbarkeit
+| Es soll möglich sein, Formulare, Tabellen, Dialoge etc. mit geringen Aufwand anzupassen, insbesondere ohne auf Änderungen im Backend angewiesen zu sein.
+
+|| Refactoring 
+| Die Implementierung der App soll änderbar sein, für Refactoring, Bug-Fixes, Performance-Verbesserungen
+
+|| Plattform-Agnostik
+| Die App soll möglichst nur einmal entwickelt werden und auf allen Zielplattformen lauffähig sein.
+
+|| Gute Struktur
+| Änderungen sollen sich effizient umsetzen lassen. Bugs sollen einfach gefunden und behoben werden können. Tests sollen einfach geschrieben und gepflegt werden können.
+
+|===
+
+== Architekt
+
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+| Q-4 | Flexibilität / Erweiterbarkeit
+| Es soll möglich sein, die Formulare, Tabellen, Dialoge etc. mit geringem Aufwand anzupassen, insbesondere ohne auf Änderungen im Backend angewiesen zu sein.
+
+|| Data Change 
+|
+
+|| Technologie-Wechsel 
+|
+
+|| Integration 
+| mit anderen Apps integrieren
+
+||Skalierbarkeit
+| mit steigendem Funktionsumfang, weiteren Plattformen
+
+|| Flexibilität
+| Feature-Toggles, konfigurierbares Verhalten, Kontext/Scope/Permissions-abhängige Darstellung
+
+|===
+
+== Product Owner
+
+Der PO sieht sich natürlich auch verantwortlich für die Nutzer-Interessen.
+Darüber hinaus hat aber eigene Interesse die insbesonderen den Prozess betreffen.
+
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+|| Agiles, interatives Vorgehen
+| Scrum, Use cases 2.0 (build the system in slices), XP/YAGNI, Lean (MVP)
+
+|| Logic Change 
+|
+
+|| Integration 
+| mit anderen Apps integrieren
+
+|| Skalierbarkeit
+| mit steigendem Funktionsumfang, weiteren Plattformen
+
+|| Flexibilität
+| Feature-Toggles, konfigurierbares Verhalten, Kontext/Scope/Permissions-abhängige Darstellung
+
+|| DevOps, CX, Kontinuierliche Verbesserung
+| A-B-Tests, X as Code
+
+|| Dokumentation
+| Pattern libraries; einheitliche Nutzung und Erscheinungsbild; Übergabefähigkeit bei wechselndem Personal
+
+|| Nutzer-Bedürfnisse
+| alle Bedürfnisse des Nutzer sollen potentiell erfüllt werden können
+
+|===
+
+== Endnutzer
+
+[cols="1,2,3",options=header]
+|===
+|ID |Anforderung| Erklärung
+
+| M-1 | Undo/Redo/Abort/Submit
+| Beim Bearbeiten oder Anlegen von Entities soll es möglich sein, Änderungen rückgängig zu machen oder zu wiederherzustellen sowie den Bearbeitungsvorgang abzubrechen und zum ursprünglichen Zustand zurückzukehren.
+
+| M-2 | CRUD-Operationen
+| Es soll möglich sein, Entitäten zu erzeugen, lesen, aktualisieren und löschen.
+
+| M-3 | Multi-Entity-Operationen
+| CRUD und Undo/Redo/Abort/Submit soll sowohl auf eine einzelne Entity als auch auf eine Menge an Entities angewendet werden können. 
+
+| M-4 | Paginierte Tabellen und Einzel-Entitäten
+| Es soll die Anzeige paginierter Tabellen und einzelner Entities vorgesehen werden.
+
+| M-5 | Sortieren und Filtern von Tabellen
+| Daten, die in Tabellen angezeigt werden, sollen sortier- und filterbar sein.
+
+| M-6 | Validierung
+| Daten, die vom Nutzer eingegeben werden, sollen validiert werden. 
+
+| Q-1| Hohe Lade-Geschwindigkeit
+| Das Frontend soll die angezeigten Daten schnell laden können bzw. durch intelligentes Caching das Laden vermeiden.
+
+| Q-2 | Daten-Konsistenz im Frontend
+| Wenn eine Entity lokal geändert (und gespeichert) wurde, soll die Anzeige überall und unmittelbar die neuen Daten anzeigen.
+
+| Q-3 | Daten-Konsistenz zwischen Usern
+| Wenn eine Entity von einem Nutzer geändert wird, soll sichergestellt werden, dass allen anderen Nutzern, die dieselbe Entity verwenden, die Änderungen zur Verfügung gestellt werden.
+
+| Q-5 | Autonomie / Offline-Fähigkeit
+| Der Nutzer soll in der Lage sein, das Frontend auch bei schlechter oder ohne Internet-Verbindung nutzen zu können (sofern dies fachlich möglich ist).
+
+| Q-6 | Responsive UI    
+| Die UI soll nicht hängen/blockieren, wenn Aktionen ausgeführt.
+Die UI soll klar zu erkennen geben, was gerade geschieht (Laden, Speichern).
+
+| Q-7 | Großen Datenmengen
+| Das Frontend soll in der Lage sein, auch großen Datenmengen (z.B. in Tabellen) ohne Leistungsminderung anzuzeigen und Daten ggf. on-demand nachzuladen.
+
+| Q-8 | Idempotenz
+| Wenn ein Request fehlgeschlagen ist, soll das Frontend in der Lage sein, den Request zu wiederholen, ohne  dass doppelte Einträge befürchtet werden müssen oder andere Aktionen zweimal ausgeführt werden.
+
+| Q-9 | Optimistic locking
+| Benutzer sollen in der Lage sein, jeden Datensatz zu modifizieren, ohne dass dafür separate Kommunikation nötig ist (z.B. um einen Datensatz gegen das Ändern eines anderen Nutzer zu sperren). Des Weiteren sollen konkurrierende/konfligierende Schreibzugriffe erkannt und "lost updates" verhindert werden.
+
+|| URLs
+| URLs sollen gebookmarkt oder verschickt werden können. Beim Versand der URL in Messengern etc. soll eine enstprechende Vorschau erzeugt werden.
+
+|| i18n/l10n 
+| Applikation soll in der passenden Sprache etc. dargestellt werden.
+
+|| a11y 
+| Nutzer mit köperlichen Einschränkungen sollen in der Lage sein, die App möglichst gut zu können.
+
+|| Ergonomie
+| Die App soll einfach und flüssig bedienbar sein.
+
+|| Plattform-Gnosis
+| Die App soll sich Plattform-typisch verhalten können.
+
+|| Ästhetik
+| Die App soll hübsch aussehen.
+
+|| Lernkurve
+| Die App soll selbsterklärend funktionieren. Dabei sollen plattform-spezifische Eigenheiten berücksichtigt werden.
+
+|| Aktualität
+| Die App und ihre Daten sollen stets aktuell sein.
+
+|===
+
+
+
