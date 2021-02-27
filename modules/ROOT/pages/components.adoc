@@ -1,4 +1,5 @@
 = Komponenten
+
 Bei Komponenten stellt sich häufig die grundlegende Frage, wie groß die Komponente sein soll, wo sie aufhört und wo sie anfängt.
 Aus technischer Sicht ist es möglich, eine komplette Applikation in einer einzelnen Komponente unterzubringen und die jeweils benötigten Teile ein- und auszublenden.
 
