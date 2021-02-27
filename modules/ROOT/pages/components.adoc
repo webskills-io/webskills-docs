@@ -116,10 +116,18 @@ In der LoginComponent wird die Sicht implementiert, wie sie der Nutzer zu sehen 
 Hier befindet sich eine Form, mit zwei Form-Inputs und dem Submit-Button.
 Die LoginComponent hat auf Komponenten-Ebene keine Inputs und als Output ein Event `loginSubmitted`, wenn der Nutzer Name und Passwort eingeben und auf den Submit-Button geklickt hat.
 
+[[login-page-components]]
+.Login-Page-Komponenten
+image::login_page_components.drawio.svg[align="center"]
+
 Der LoginPageContainer bettet die LoginComponent ein ruft und beim Event `loginSubmitted` den LoginService auf.
 Wenn der Login erfolgreich war und in der URL ein redirect spezifiziert war (http://acme.com/login?redirectTo=dashboard) leitet der LoginPageContainer auf das redirect-Ziel weiter.
 Wenn der Login erolgreich war, aber keine redirect definiert wurde, leitet der LoginPageContainer auf die Startseite weiter.
 Wenn der Login nicht erfolgreich war, zeigt der LoginPageContainer eine Fehlermeldung an.
+
+[[login-dialog-components]]
+.Login-Dialog-Komponenten
+image::login_dialog_components.drawio.svg[align="center"]
 
 Auch der LoginDialogContainer bettet die LoginComponent ein und ruft beim Event `loginSubmitted` den LoginService auf.
 Wenn der Login erfolgreich war, schließt der LoginDialogContainer den Dialog.
