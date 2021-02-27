@@ -1,0 +1,144 @@
+= Komponenten
+Bei Komponenten stellt sich häufig die grundlegende Frage, wie groß die Komponente sein soll, wo sie aufhört und wo sie anfängt.
+Aus technischer Sicht ist es möglich, eine komplette Applikation in einer einzelnen Komponente unterzubringen und die jeweils benötigten Teile ein- und auszublenden.
+
+Ein sinnvoller Ansatz besteht darin, die Komponenten in Container- und Presentational-Komponenten zu aufzutrennen.
+Häufig wird hier vereinfachend auch von Smart- und Dumb-Komponenten gesprochen.
+
+[[components]]
+.Schachtelung der Komponenten
+image::components.drawio.svg[align="center"]
+
+Container-Komponente::
+Container-Komponenten bieten einen Container für Presentational-Komponenten.
+Ihre Aufgabe ist es, vom Kontext zu entkoppeln, in dem eine Funktionalität zur Verfügung gestellt werden soll.
+
+Presentational-Komponente::
+Der Fokus von Presentational-Komponenten liegt in der Darstellung von Informationen und der Interaktion mit dem Nutzer.
+Ihre Implementierung orientiert sich an der Umsetzung konkreter Use-Cases.
+Die Komponenten können in verschiedenen Kontexten eingesetzt werden.
+
+Als weiterer unterscheidbarer Komponenten-Typ in diesem Ansatz bietet sich die Functional-Komponente an.
+
+Functional-Komponente::
+Functional-Komponenten liefern eine use-case-unabhängige, generische Funktionalität.
+
+Wie folgende Tabelle zeigt, ist das Kriterium für die Unterscheidung der Zugehörigkeit vor allem die Wiederverwendbarkeit.
+
+[cols="1,1,1,1",options=header]
+|===
+| Typ             | Wiederverwendbarkeit  | Komplexität     | sichtbar
+| Container       | gering                | mittel          | nein
+| Presentational  | mittel                | hoch            | ja
+| Functional      | hoch                  | gering bis hoch | ja
+|===
+
+
+.Anforderungen
+****
+Bei diesem Ansatz werden die folgenden Anforderungen tangiert:
+
+* Komponenten sollen gut testbar sein.
+* Einige Komponente sollen wiederverwendbar sein.
+* Komponenten sollten im Rahmen einer Pattern-Library verwendet werden können.
+* Externe Komponenten-Libraries sollen sich harmonisch einfügen.
+* Komponenten sollen von den relevanten Leuten verstehbar und pflegbar sein. Die Komplexität soll ein überschaubare Maß nicht übersteigen.
+* Änderungen sollen nur den gewünschten Impact haben - überraschende Nebeneffekte sollen vermieden werden.
+* Anforderungs-Änderungen (die z.B. UI, Logik oder das Datenmodell betreffen) sollen möglichst nur Umsetzungs-Änderungen an wenigen, leicht auffindbaren Stellen erfordern.
+****
+
+== Container-Komponenten
+
+Die Aufgabe von Container-Komponenten ist es, für die inneren Komponenten das Feld zu bereiten.
+Dafür benötigen diese Komponenten keine eigene UI-Darstellung.
+Stattdessen nutzen die Container-Komponenten typischerweise Services, die das Framework bereitstellt (wie Router, Activated Route) und eigene use-case-spezifische Service.
+Daten aus diesen Service werden vorverarbeitet an die innere Presentational-Komponente weitergereicht.
+Und Events aus der Presentational-Komponente werden verarbeitet und ggf. an die Service weitergereicht.
+
+Übliche Container-Komponenten sind z.B.:
+
+* Pages
+* Dialoge
+* Widgets
+
+Page-Container lesen beispielsweise Parameter aus der URL aus und fragen Daten bei einem Service an.
+Das Ergebnis wird dann an die innere Komponente gereicht.
+Sie können Erfolgs- und Fehlermeldungen anzeigen und zeichnen verantwortlich für das Routing auf weitere Seiten.
+
+Werden Komponenten programmatisch über eine Factory erzeugt (und nicht dadurch, dass sie innerhalb eines Templates genutzt werden), können die Inputs und Outputs nicht auf üblichem Wege gesetzt und gelesen werden.
+Um zu vermeiden, dass diese Aspekte Teil der Presentational-Komponenten werden, ist es auch hier sinnvoll, diese Komponenten in einen Dialog- oder Widget-Container einzubetten.
+
+== Presentational-Komponenten
+
+Die Presentational-Komponente dient einem konkreten Use-Case, der umgesetzt werden soll.
+Da sie innerhalb einer Container-Komponenten verwendet wird, ist es nicht nötig, sich mit dem Kontext auseinanderzusetzen.
+Benötigte Eingaben erhält die Komponente über Input-Felder und Events werden über Output-Emitter verschickt.
+Von ihrer Verwendung entsprechen Presentational-Komponenten damit den W3-Web-Components.
+
+Da Presentational-Komponenten keine Annahmen über den Kontext machen müssen, lassen sie sich einfacher testen, als Container-Komponenten.
+Des Weiteren sind sie besser wiederverwendbar und können gut in Pattern-Libraries wie Storybook angezeigt und dokumentiert werden.
+
+Presentational-Komponenten können Functional-Komponenten verwenden oder andere Presentational-Komponenten, wenn dies sinnvoll erscheint.
+Es ist aber genausogut möglich, dass keine weiteren Komponenten verwendet werden.
+
+== Functional-Komponenten
+
+Vom Aufbau her sind Functional-Komponenten identisch wie die Presentational-Komponenten.
+Während Presentational-Komponenten jedoch einem konkreten Use-Case dienen, sind Functional-Komponenten agnostisch verwendbar.
+Komponenten, die innerhalb externer Komponenten-Bibliotheken (wie beispielsweise Material) vorhanden sind, bilden gute Beispiele für Functional-Komponenten.
+
+Die Komplexität einer Functional-Komponente kann dabei sehr unterschiedlich sein.
+Es kann sich sowohl um ein angepasstes Input-Feld handeln als auch um einen Date-Picker bis hin zu vorgefertigten Menu-Komponenten oder aufwendige Tabellen mit Standard-Aktionen.
+
+Functional-Komponenten können andere Functional-Komponenten verwenden.
+
+== Beispiel: Login
+
+Im Folgendes soll als Beispiel eine einfache Login-Komponenten angenommen werden.
+Sie besteht aus zwei Input-Felder und einem Submit-Button.
+
+Die Login-Funktionalität soll unter der URL http://acme.com/login zur Verfügung stehen als auch in Form eines Login-Dialogs, der auf verschiedenen Seite aufgerufen werden kann. Entsprechend dem zuvor beschrieben Ansatz würde es die folgenden Bestandteile geben:
+
+* LoginPageContainer
+* LoginDialogContainer
+* LoginComponent
+* LoginService
+
+Die LoginComponent hat keine Inputs und als Output ein Event `loginSubmitted`, wenn der Nutzer Name und Passwort eingeben und auf den Submit-Button geklickt hat.
+
+Der LoginPageContainer bettet die LoginComponent ein ruft bei dem Event `loginSubmitted` den LoginService auf.
+Wenn der Login erfolgreich war und in der URL ein redirect spezifiziert war (http://acme.com/login?redirectTo=dashboard) leitet der LoginPageContainer auf das redirect-Ziel weiter.
+Wenn der Login erolgreich war, aber keine redirect definiert wurde, leitet der LoginPageContainer auf die Startseite weiter.
+Wenn der Login nicht erfolgreich war, zeigt der LoginPageContainer eine Fehlermeldung an.
+
+Auch der LoginDialogContainer bettet die LoginComponent ein ruft bei dem Event `loginSubmitted` den LoginService auf.
+Wenn der Login erfolgreich war, schließt der LoginDialogContainer den Dialog.
+Wenn der Login nicht erfolgreich war, zeigt der LoginDialogContainer eine Fehlermeldung an.
+
+Sofern Storybook verwendet wird, wird die LoginComponent dort eingebunden.
+
+In diesem Beispiel wurden u.a. folgende Aspekte nicht berücksichtigt, um die man die Implementierung in der Realität erweitern würde:
+
+* Anzeige eines Loading-Indicators
+* Hervorheben des Form-Felds, das fehlerhaft war (beispielsweise: "Email-Adresse unbekannt")
+* Speichern des Login-States in einem Store
+
+.Concerns
+****
+Die folgenden Concerns wurden berührt:
+
+* die sichtbare Struktur aus html-Tags
+* das Styling per CSS
+* das Routing und die Interaktion mit der URL
+* die Verarbeitung von Logik und State
+* Data-Type-Presentation und Handling
+* state dependent control of visibility, changeability
+* data handling (z.B. Caching...)
+****
+
+.Siehe auch
+****
+* https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/
+* https://medium.com/@thejasonfile/dumb-components-and-smart-components-e7b33a698d43
+* https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
+****
