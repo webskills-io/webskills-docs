@@ -1,0 +1,98 @@
+= Stakeholders
+
+Bei der Entwicklung von Frontend spielen die Anforderungen ganz verschiedener Personengruppe eine Rolle.
+Diese Gruppen und ihr jeweiliger Einfluss sollen im Folgenden betrachtet werden.
+
+== Sponsor, Marketing, Controlling
+
+Diese Personengruppe ist üblicherweise nicht in den Entwicklungsprozess eingebunden.
+Vielmehr definieren sie allgemeine Randbedingungen, die Berücksichtigung finden.
+
+Zu den Anforderungen gehören:
+
+* Flexibilität, Erweiterbarkeit
+* Skalierbarkeit
+* Investitionssicherheit
+* SEO
+
+== Designer
+
+Anforderungen
+
+* UI-Change
+* Anpassbarkeit, Freiheit
+
+== Design-Ops
+
+Design Ops hat eine integrierende Aufgabe zwischen Design und Standard-Anforderungen, wie sie in der Entwicklung seit langem etabliert wurden.
+
+Anforderungen:
+
+* Übergabe/Übernahme-Fähigkeit
+* Dokumentation
+* Testbarkeit
+* Pattern Library
+
+== Programmierer
+
+Anforderungen:
+
+* Flexibilität / Erweiterbarkeit
+* Refactoring
+* Plattform-Agnostik
+* Gute Struktur
+
+== Architekt
+
+Anforderungen: 
+
+* Flexibilität / Erweiterbarkeit
+* Data Change 
+* Technologie-Wechsel 
+* Integration 
+* Skalierbarkeit
+* Flexibilität
+
+
+== Product Owner
+
+Der PO sieht sich natürlich auch verantwortlich für die Nutzer-Interessen.
+Darüber hinaus hat aber eigene Interesse die insbesonderen den Prozess betreffen.
+
+Anforderungen:
+
+* Agiles, iteratives Vorgehen
+* Logic Change 
+* Integration 
+* Skalierbarkeit
+* Flexibilität
+* DevOps, CX, Kontinuierliche Verbesserung
+* Dokumentation
+* Nutzer-Bedürfnisse
+
+== Endnutzer
+
+Anforderungen:
+
+* Undo/Redo/Abort/Submit
+* CRUD-Operationen
+* Multi-Entity-Operationen
+* Paginierte Tabellen und Einzel-Entitäten
+* Sortieren und Filtern von Tabellen
+* Validierung
+* Hohe Lade-Geschwindigkeit
+* Daten-Konsistenz im Frontend
+* Daten-Konsistenz zwischen Usern
+* Autonomie / Offline-Fähigkeit
+* Responsive UI    
+* Großen Datenmengen
+* Idempotenz
+* Optimistic locking
+* URLs
+* i18n/l10n 
+* a11y 
+* Ergonomie
+* Plattform-Gnosis
+* Ästhetik
+* Lernkurve
+* Aktualität
