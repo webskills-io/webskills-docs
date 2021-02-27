@@ -2,12 +2,20 @@
 Bei Komponenten stellt sich häufig die grundlegende Frage, wie groß die Komponente sein soll, wo sie aufhört und wo sie anfängt.
 Aus technischer Sicht ist es möglich, eine komplette Applikation in einer einzelnen Komponente unterzubringen und die jeweils benötigten Teile ein- und auszublenden.
 
-Ein sinnvoller Ansatz besteht darin, die Komponenten in Container- und Presentational-Komponenten zu aufzutrennen.
+Ein sinnvoller Ansatz besteht darin, die Komponenten in Container- und Presentational-Komponenten aufzutrennen.
 Häufig wird hier vereinfachend auch von Smart- und Dumb-Komponenten gesprochen.
+Wobei die Smart-Komponente der Container-Komponente entspricht und die Dumb-Komponenten der Presentational-Komponenten.
+Da jedoch auch Presentational-Komponenten ein hohes an Präsentationslogik beinhalten können und alles andere als _dumb_ sind, werden hier die Begriff smart und dumb vermieden.
+In Kontrast zu anderen Ausarbeitungen liegt der Fokus des hier vorgestellten Ansatzes auch nicht in der Handhabung von "State" oder der Trennung in stateful oder stateless Komponenten.
+Vielmehr liegt das Aufgenmerk auf einer ganze Reihe von Anforderungen, die im Block "Anforderungen" aufgelistet werden.
+
+Folgende Grafik skizziert, wie die Komponenten in Zusammenhang miteinander stehen.
 
 [[components]]
 .Schachtelung der Komponenten
 image::components.drawio.svg[align="center"]
+
+Die Komponenten werden dabei wie folgt charakterisiert.
 
 Container-Komponente::
 Container-Komponenten bieten einen Container für Presentational-Komponenten.
@@ -104,14 +112,16 @@ Die Login-Funktionalität soll unter der URL http://acme.com/login zur Verfügun
 * LoginComponent
 * LoginService
 
-Die LoginComponent hat keine Inputs und als Output ein Event `loginSubmitted`, wenn der Nutzer Name und Passwort eingeben und auf den Submit-Button geklickt hat.
+In der LoginComponent wird die Sicht implementiert, wie sie der Nutzer zu sehen bekommt.
+Hier befindet sich eine Form, mit zwei Form-Inputs und dem Submit-Button.
+Die LoginComponent hat auf Komponenten-Ebene keine Inputs und als Output ein Event `loginSubmitted`, wenn der Nutzer Name und Passwort eingeben und auf den Submit-Button geklickt hat.
 
-Der LoginPageContainer bettet die LoginComponent ein ruft bei dem Event `loginSubmitted` den LoginService auf.
+Der LoginPageContainer bettet die LoginComponent ein ruft und beim Event `loginSubmitted` den LoginService auf.
 Wenn der Login erfolgreich war und in der URL ein redirect spezifiziert war (http://acme.com/login?redirectTo=dashboard) leitet der LoginPageContainer auf das redirect-Ziel weiter.
 Wenn der Login erolgreich war, aber keine redirect definiert wurde, leitet der LoginPageContainer auf die Startseite weiter.
 Wenn der Login nicht erfolgreich war, zeigt der LoginPageContainer eine Fehlermeldung an.
 
-Auch der LoginDialogContainer bettet die LoginComponent ein ruft bei dem Event `loginSubmitted` den LoginService auf.
+Auch der LoginDialogContainer bettet die LoginComponent ein und ruft beim Event `loginSubmitted` den LoginService auf.
 Wenn der Login erfolgreich war, schließt der LoginDialogContainer den Dialog.
 Wenn der Login nicht erfolgreich war, zeigt der LoginDialogContainer eine Fehlermeldung an.
 
