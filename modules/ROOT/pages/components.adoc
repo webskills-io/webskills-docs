@@ -103,7 +103,7 @@ Functional-Komponenten können andere Functional-Komponenten verwenden.
 
 == Beispiel: Login
 
-Im Folgendes soll als Beispiel eine einfache Login-Komponenten angenommen werden.
+Im Folgendes soll als Beispiel eine einfache Login-Komponente angenommen werden.
 Sie besteht aus zwei Input-Felder und einem Submit-Button.
 
 Die Login-Funktionalität soll unter der URL http://acme.com/login zur Verfügung stehen als auch in Form eines Login-Dialogs, der auf verschiedenen Seite aufgerufen werden kann. Entsprechend dem zuvor beschrieben Ansatz würde es die folgenden Bestandteile geben:
