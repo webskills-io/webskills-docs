@@ -6,7 +6,9 @@ Aus technischer Sicht ist es möglich, eine komplette Applikation in einer einze
 Ein sinnvoller Ansatz besteht darin, die Komponenten in Container- und Presentational-Komponenten aufzutrennen.
 Häufig wird hier vereinfachend auch von Smart- und Dumb-Komponenten gesprochen.
 Wobei die Smart-Komponente der Container-Komponente entspricht und die Dumb-Komponenten der Presentational-Komponenten.
-Da jedoch auch Presentational-Komponenten ein hohes an Präsentationslogik beinhalten können und alles andere als _dumb_ sind, werden hier die Begriff smart und dumb vermieden.
+Des Weiteren gibt es die Lesart, unter _smart_ die Teile zu verstehen, die für die Erfüllung eines Use-Cases erstellt wurden.
+Und als _dumb_ die Teile, die allgemein wiederverwendbar sind.
+Hinzu kommt, dass jede Komponente ein hohes Maß an Präsentationslogik beinhalten und somit alles andere als _dumb_ sein kann, daher werden hier die Begriff smart und dumb vermieden.
 In Kontrast zu anderen Ausarbeitungen liegt der Fokus des hier vorgestellten Ansatzes auch nicht in der Handhabung von "State" oder der Trennung in stateful oder stateless Komponenten.
 Vielmehr liegt das Aufgenmerk auf einer ganze Reihe von Anforderungen, die im Block "Anforderungen" aufgelistet werden.
 
