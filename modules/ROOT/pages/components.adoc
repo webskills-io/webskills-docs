@@ -123,7 +123,7 @@ Die LoginComponent hat auf Komponenten-Ebene keine Inputs und als Output ein Eve
 .Login-Page-Komponenten
 image::login_page_components.drawio.svg[align="center"]
 
-Der LoginPageContainer bettet die LoginComponent ein ruft und beim Event `loginSubmitted` den LoginService auf.
+Der LoginPageContainer bettet die LoginComponent ein und ruft beim Event `loginSubmitted` den LoginService auf.
 Wenn der Login erfolgreich war und in der URL ein redirect spezifiziert war (http://acme.com/login?redirectTo=dashboard) leitet der LoginPageContainer auf das redirect-Ziel weiter.
 Wenn der Login erolgreich war, aber keine redirect definiert wurde, leitet der LoginPageContainer auf die Startseite weiter.
 Wenn der Login nicht erfolgreich war, zeigt der LoginPageContainer eine Fehlermeldung an.
